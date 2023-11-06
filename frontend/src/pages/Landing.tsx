@@ -7,7 +7,6 @@ export default function Landing() {
     <main>
       <Navbar />
       <Hero />
-      <Footer />
     </main>
   );
 }
