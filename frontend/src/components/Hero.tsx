@@ -1,4 +1,5 @@
 import Lottie from "lottie-react";
+
 import heroAnimation from "../assets/tech-2.json";
 export default function Hero() {
   return (
