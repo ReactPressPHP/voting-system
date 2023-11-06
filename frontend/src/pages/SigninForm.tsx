@@ -25,9 +25,9 @@ const SigninForm = () => {
         </button>
       </div>
       <div className="flex flex-col items-center justify-center gap-5 mb-24">
-        <Link to={"/admin-signin"} className="mt-5 font-semibold text-accent">
+        {/* <Link to={"/admin-signin"} className="mt-5 font-semibold text-accent">
           Sign in as an admin
-        </Link>
+        </Link> */}
         <p className="mr-3 text-blue-950">
           Don't have an account?
           <Link to="/sign-up" className="ml-1 font-semibold text-accent">
