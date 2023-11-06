@@ -8,7 +8,7 @@ const SigninForm = () => {
         <h1 className="text-5xl font-extrabold normal-case text-blue-950">
           WELCOME
         </h1>
-        <form className="flex flex-col items-center justify-center w-1/2 gap-10 ">
+        <form className="flex flex-col items-center justify-center w-1/2 gap-5">
           <Input placeholder="ID  or Phone number" type="text" />
           <Input placeholder="Password" type="password" />
           <div className="flex items-center justify-between w-3/4 text-accent ">
