@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -6,21 +6,42 @@ export default function Navbar() {
       <div className="flex-1">
         <Link
           to={"/"}
-          className="text-3xl font-extrabold normal-case btn btn-ghost text-blue-950"
+          className="text-2xl font-extrabold normal-case btn btn-ghost text-blue-950"
         >
           Daedalus
         </Link>
       </div>
       <div className="flex-none">
-        <ul className="px-1 text-lg menu menu-horizontal text-blue-950">
+        <ul className="px-1 text-md menu menu-horizontal text-blue-950">
           <li>
-            <Link to="/">About us</Link>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                isActive ? "bg-accent text-white" : ""
+              }
+            >
+              About us
+            </NavLink>
           </li>
           <li>
-            <Link to="/rankings">Vote Rankings</Link>
+            <NavLink
+              to="/rankings"
+              className={({ isActive }) =>
+                isActive ? "bg-accent text-white" : ""
+              }
+            >
+              Vote Rankings
+            </NavLink>
           </li>
           <li>
-            <Link to="sign-in">Login</Link>
+            <NavLink
+              to="sign-in"
+              className={({ isActive }) =>
+                isActive ? "bg-accent text-white" : ""
+              }
+            >
+              Login
+            </NavLink>
           </li>
         </ul>
       </div>
