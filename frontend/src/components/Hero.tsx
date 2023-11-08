@@ -23,7 +23,9 @@ export default function Hero() {
             a id nisi.
           </p>
           <button
-            onClick={() => navigate(isAuthenticated ? "/app" : "/sign-in")}
+            onClick={() =>
+              navigate(isAuthenticated ? "/dashboard" : "/sign-in")
+            }
             className="text-white btn bg-accent hover:bg-second"
           >
             GET STARTED
