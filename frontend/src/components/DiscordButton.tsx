@@ -13,7 +13,7 @@ const DiscordIcon = (props) => {
 };
 
 const BASE_URL =
-  "https://discord.com/api/oauth2/authorize?client_id=1171423992876371978&redirect_uri=http%3A%2F%2Flocalhost%3A5173%2Fsign-in&response_type=code&scope=identify";
+  "https://discord.com/api/oauth2/authorize?client_id=1171423992876371978&redirect_uri=http%3A%2F%2Flocalhost%3A5173%2Fsign-in&response_type=token&scope=identify";
 
 export default function DiscordButton() {
   return (
@@ -23,7 +23,7 @@ export default function DiscordButton() {
         href={BASE_URL}
       >
         <DiscordIcon className="mr-4 h-7 w-7 fill-white hover:fill-white/80" />
-        <span className="text-sm">Sign in with Discord</span>
+        <span className="text-sm">Connect</span>
       </a>
     </div>
   );

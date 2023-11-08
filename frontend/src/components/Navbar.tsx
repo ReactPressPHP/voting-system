@@ -1,8 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { AuthContext } from "../contexts/AuthContext";
+import { useContext, useEffect } from "react";
+import useLocalStorage from "use-local-storage";
 
 export default function Navbar() {
-  const { isAuthenticated, handleLogOut, user, avatar } = useAuth();
+  const [data] = useLocalStorage("discordChuChu", "");
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
   return (
     <div className="fixed z-50 navbar lg:px-60 md:px-20 bg-base-100">
       <div className="flex-1">
@@ -35,32 +40,38 @@ export default function Navbar() {
               Vote Rankings
             </NavLink>
           </li>
-          <li>
-            {isAuthenticated ? (
-              <div className="px-2 py-0">
-                <img src={avatar} className="inline rounded-[100%] w-8" />
-                <span>{user}</span>
-              </div>
-            ) : (
-              <NavLink
-                to="sign-in"
-                className={({ isActive }) =>
-                  isActive ? "bg-accent text-white" : ""
-                }
-              >
-                Login
-              </NavLink>
-            )}
+          {/* <li>
+            <NavLink
+              to="sign-in"
+              className={({ isActive }) =>
+                isActive ? "bg-accent text-white" : ""
+              }
+            >
+              Login
+            </NavLink>
           </li>
-          {isAuthenticated && (
-            <li>
-              <button
-                className="ml-5 text-white bg-accent"
-                onClick={handleLogOut}
-              >
-                Log out
-              </button>
-            </li>
+          <li>
+            <button className="ml-5 text-white bg-accent">Log out</button>
+          </li> */}
+
+          {data ? (
+            <button
+              onClick={() => {
+                localStorage.setItem("discordChuChu", "");
+                window.location.reload();
+              }}
+            >
+              LOG OUT
+            </button>
+          ) : (
+            <NavLink
+              to="sign-in"
+              className={({ isActive }) =>
+                isActive ? "bg-accent text-white" : ""
+              }
+            >
+              LOGIN
+            </NavLink>
           )}
         </ul>
       </div>

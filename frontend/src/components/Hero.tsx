@@ -1,10 +1,10 @@
 import Lottie from "lottie-react";
 import heroAnimation from "../assets/tech-2.json";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import useLocalStorage from "use-local-storage";
 
 export default function Hero() {
-  const { isAuthenticated } = useAuth();
+  const [data] = useLocalStorage("discordChuChu", "");
   const navigate = useNavigate();
   return (
     <div className="bg-white hero min-h-[calc(100vh)]">
@@ -23,13 +23,12 @@ export default function Hero() {
             a id nisi.
           </p>
           <button
-            onClick={() =>
-              navigate(isAuthenticated ? "/dashboard" : "/sign-in")
-            }
+            onClick={() => navigate("/dashboard")}
             className="text-white btn bg-accent hover:bg-second"
           >
             GET STARTED
           </button>
+          {data && <button onClick={() => alert(data.id)}>VOTE</button>}
         </div>
       </div>
     </div>
