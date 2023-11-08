@@ -5,16 +5,18 @@ import useLocalStorage from "use-local-storage";
 import { useEffect, useState } from "react";
 
 export default function Hero() {
-  const [data] = useLocalStorage("discordChuChu", "");
+  const [data] = useLocalStorage<{ id: string }>("discordChuChu", { id: "" });
   const [isMember, setIsMember] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:7000/api/${data.id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setIsMember(data.is_member);
-      });
+    if (data.id) {
+      fetch(`http://localhost:7000/api/${data.id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setIsMember(data.is_member);
+        });
+    }
   }, [data]);
   return (
     <div className="bg-white hero min-h-[calc(100vh)]">
@@ -32,13 +34,15 @@ export default function Hero() {
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
           </p>
-          <button
-            onClick={() => navigate("/dashboard")}
-            className="text-white btn bg-accent hover:bg-second"
-          >
-            GET STARTED
-          </button>
-          {isMember && <button>VOTE</button>}
+          {isMember && (
+            <button
+              onClick={() => navigate("/events")}
+              className="text-white btn bg-accent hover:bg-second"
+            >
+              View Events
+            </button>
+          )}
+          {/* {isMember && <Link to="/events">VOTE</Link>} */}
         </div>
       </div>
     </div>
