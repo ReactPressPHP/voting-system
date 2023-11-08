@@ -2,10 +2,20 @@ import Lottie from "lottie-react";
 import heroAnimation from "../assets/tech-2.json";
 import { useNavigate } from "react-router-dom";
 import useLocalStorage from "use-local-storage";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
   const [data] = useLocalStorage("discordChuChu", "");
+  const [isMember, setIsMember] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch(`http://localhost:7000/api/${data.id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setIsMember(data.is_member);
+      });
+  }, [data]);
   return (
     <div className="bg-white hero min-h-[calc(100vh)]">
       <div className="flex-col lg:gap-60 max-w-[100rem] hero-content lg:flex-row-reverse">
@@ -28,7 +38,7 @@ export default function Hero() {
           >
             GET STARTED
           </button>
-          {data && <button onClick={() => alert(data.id)}>VOTE</button>}
+          {isMember && <button>VOTE</button>}
         </div>
       </div>
     </div>
