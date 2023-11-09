@@ -3,8 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\api\Login\LoginController;
-
+use App\Http\Controllers\Api\Login\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,12 +15,8 @@ use App\Http\Controllers\api\Login\LoginController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// use App\Http\Controllers\Auth\AuthenticatedSessionController;
+// use App\Http\Controllers\Auth\ConfirmablePasswordController;
+// use Jakyeru\Larascord\Http\Controllers\DiscordController;
 
-
-Route::post('/login', [LoginController::class, 'login']);
-
-Route::get('/events', [EventsController::class, 'getList']);
-Route::get('/events/{id}', [EventsController::class, 'getInfo']);
+Route::get('/Login', [UserController::class, 'DiscordLogin']);
