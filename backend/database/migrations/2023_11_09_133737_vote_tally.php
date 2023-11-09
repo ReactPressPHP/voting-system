@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('Vote_Tally', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('team_id');
-            $table->bigInteger('participant_vote_score')->nullable();
-            $table->bigInteger('judge_vote_score')->nullable();
+            $table->double('participant_vote_score')->nullable();
+            $table->double('judge_vote_score')->nullable();
         });
     }
 
