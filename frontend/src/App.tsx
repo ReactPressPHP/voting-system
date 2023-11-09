@@ -36,30 +36,16 @@ function App() {
             <Route path="/event-details" element={<EventsDetails />} />
             <Route path="*" element={<p>404 Not Found</p>} />
           </Route>
-          <Route
-            path="/admin"
-            element={
-              <AdminProtectedRoute>
-                {/* AdminProtectedRoute component is still work in progress*/}
-                <AdminSignIn />
-              </AdminProtectedRoute>
-            }
-          />
-          <Route
-            element={
-              <AdminProtectedRoute>
-                <AdminLayout />
-              </AdminProtectedRoute>
-            }
-          >
-            <Route path="admin/dashboard" element={<AdminDashBoard />}>
-              <Route path="events" element={<AdminEvents />} />
+          <Route element={<AdminLayout />}>
+            <Route path="/admin" element={<AdminDashBoard />}>
+              <Route path="sign-in" element={<AdminSignIn />} />
+              <Route path="events/records" element={<AdminEvents />} />
               <Route path="events/create" element={<AdminEventsCreate />} />
               <Route path="events/edit" element={<AdminEventsEdit />} />
-              <Route path="teams" element={<AdminTeams />} />
+              <Route path="teams/records" element={<AdminTeams />} />
               <Route path="teams/create" element={<AdminTeamsCreate />} />
               <Route path="teams/edit" element={<AdminTeamsEdit />} />
-              <Route path="users" element={<AdminUsers />} />
+              <Route path="users/records" element={<AdminUsers />} />
               <Route path="users/create" element={<AdminUsersCreate />} />
               <Route path="users/edit" element={<AdminUsersEdit />} />
             </Route>
