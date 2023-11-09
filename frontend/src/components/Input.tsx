@@ -8,13 +8,13 @@ interface InputProps {
 const Input = (props: InputProps) => {
   const { placeholder, type, label, name } = props;
   return (
-    <div className="   form-control w-full max-w-xl">
-      <label className="label flex flex-col justify-start text-blue-950 gap-2 items-start">
-        <p className="label-text  ">{label}</p>
+    <div className="form-control w-full">
+      <label className="label flex flex-col justify-start text-blue-950 gap-1 items-start">
+        <p className="label-text">{label}</p>
         <input
           type={type}
           placeholder={placeholder}
-          className="input input-bordered w-full max-w-xl"
+          className="input input-bordered w-full"
           name={name}
         />
       </label>
