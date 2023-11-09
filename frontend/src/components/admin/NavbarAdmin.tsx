@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function NavbarAdmin() {
   return (
     <>
-      <div className="navbar bg-accent sticky top-0 z-[1000]">
+      <div className="navbar bg-white sticky top-0 z-[1000]">
         <div className="flex-none">
           <label htmlFor="main-drawer" className="btn btn-square btn-ghost">
             <svg
@@ -72,37 +72,28 @@ export default function NavbarAdmin() {
             <div className="mb-3">
               <p className="text-secondary">Events</p>
               <li>
-                <Link to="admin/dashboard/events">Records</Link>
+                <NavLink to="admin/events/records">Records</NavLink>
               </li>
               <li>
-                <Link to="admin/dashboard/events/create">Create New</Link>
-              </li>
-              <li>
-                <a>Trash Bin</a> {/*Tentative*/}
+                <NavLink to="admin/events/create">Create New</NavLink>
               </li>
             </div>
             <div className="mb-3">
               <p className="text-secondary">Teams</p>
               <li>
-                <Link to="admin/dashboard/teams">Records</Link>
+                <NavLink to="admin/teams/records">Records</NavLink>
               </li>
               <li>
-                <Link to="admin/dashboard/teams/create">Create New</Link>
-              </li>
-              <li>
-                <a>Trash Bin</a> {/*Tentative*/}
+                <NavLink to="admin/teams/create">Create New</NavLink>
               </li>
             </div>
             <div className="mb-3">
               <p className="text-secondary">Users</p>
               <li>
-                <Link to="admin/dashboard/users">Records</Link>
+                <NavLink to="admin/users/records">Records</NavLink>
               </li>
               <li>
-                <Link to="admin/dashboard/users/create">Create New</Link>
-              </li>
-              <li>
-                <a>Trash Bin</a> {/*Tentative*/}
+                <NavLink to="admin/users/create">Create New</NavLink>
               </li>
             </div>
           </ul>
