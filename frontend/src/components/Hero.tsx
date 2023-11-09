@@ -34,14 +34,12 @@ export default function Hero() {
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
           </p>
-          {isMember && (
-            <button
-              onClick={() => navigate("/events")}
-              className="text-white btn bg-accent hover:bg-second"
-            >
-              View Events
-            </button>
-          )}
+          <button
+            onClick={() => navigate(isMember ? "/events" : "/sign-in")}
+            className="text-white btn bg-accent hover:bg-second"
+          >
+            View Events
+          </button>
           {/* {isMember && <Link to="/events">VOTE</Link>} */}
         </div>
       </div>

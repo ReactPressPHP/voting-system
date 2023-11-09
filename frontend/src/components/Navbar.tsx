@@ -1,13 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
-import { AuthContext } from "../contexts/AuthContext";
-import { useContext, useEffect } from "react";
 import useLocalStorage from "use-local-storage";
 
 export default function Navbar() {
   const [data] = useLocalStorage("discordChuChu", "");
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
   return (
     <div className="fixed z-50 navbar lg:px-60 md:px-20 bg-base-100">
       <div className="flex-1">
@@ -55,23 +50,21 @@ export default function Navbar() {
           </li> */}
 
           {data ? (
-            <button
-              onClick={() => {
-                localStorage.setItem("discordChuChu", "");
-                window.location.reload();
-              }}
-            >
-              LOG OUT
-            </button>
+            <li>
+              <button
+                onClick={() => {
+                  localStorage.setItem("discordChuChu", "");
+                  window.location.reload();
+                }}
+                className="bg-accent text-white"
+              >
+                Logout
+              </button>
+            </li>
           ) : (
-            <NavLink
-              to="sign-in"
-              className={({ isActive }) =>
-                isActive ? "bg-accent text-white" : ""
-              }
-            >
-              LOGIN
-            </NavLink>
+            <li>
+              <NavLink to="sign-in">Login</NavLink>
+            </li>
           )}
         </ul>
       </div>
