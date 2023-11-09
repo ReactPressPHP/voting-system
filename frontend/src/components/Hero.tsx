@@ -9,6 +9,8 @@ export default function Hero() {
   const [isMember, setIsMember] = useState(false);
   const navigate = useNavigate();
 
+  console.log(isMember);
+
   useEffect(() => {
     if (data.id) {
       fetch(`http://localhost:7000/api/${data.id}`)
