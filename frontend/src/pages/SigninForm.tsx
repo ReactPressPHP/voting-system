@@ -1,4 +1,4 @@
-import { Link, useHref, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import DiscordButton from "../components/DiscordButton";
 import { useEffect, useState } from "react";
 
