@@ -28,7 +28,5 @@ class EventsController extends Controller
             //return error
             return response()->json(['error' => 'User has already voted'], 400);
         }
-
-        
     }
 }
