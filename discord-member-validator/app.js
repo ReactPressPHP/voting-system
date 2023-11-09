@@ -15,7 +15,8 @@ const corsOptions = {
 
 app.use('/api', discordCheckerRouter);
 
-app.listen(process.env.APP_PORT, () => {
+const APP_PORT = process.env.APP_PORT || 3000;
+app.listen(APP_PORT, () => {
   console.log(`Server is running on port ${process.env.APP_PORT}`);
 })
 
