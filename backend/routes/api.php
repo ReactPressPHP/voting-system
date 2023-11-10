@@ -25,7 +25,11 @@ use App\Http\Controllers\Api\Vote\VoteController;
 
 Route::get('/Login', [UserController::class, 'DiscordLogin']);
 
-Route::post('events/create', [EventsController::class, 'create']);
+Route::get('/events', [EventsController::class, 'records']);
+Route::get('/events/{id}', [EventsController::class, 'singleItem']);
+Route::post('/events/create', [EventsController::class, 'create']);
+Route::post('/events/update/{id}', [EventsController::class, 'update']);
+Route::post('/events/delete/{id}', [EventsController::class, 'delete']);
+
 
 Route::post('/vote', [VoteController::class, 'Vote']);
-

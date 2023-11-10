@@ -7,6 +7,7 @@ use App\Models\votes;
 use Illuminate\Http\Request;
 use DateTime;
 use App\Models\events;
+
 class EventsController extends Controller
 {
     public function vote(Request $request)
@@ -29,6 +30,51 @@ class EventsController extends Controller
             //return error
             return response()->json(['error' => 'User has already voted'], 400);
         }
+    }
+
+    // View datas
+    public function records(Request $request)
+    {
+
+        $page = $request->input('page') ?? '1';
+        $keyword = $request->input('keyword') ?? '';
+        $limit = $request->input('limit') ?? '10';
+        $order = $request->input('order') ?? 'asc';
+        $orderBy = $request->input('orderBy') ?? 'title';
+
+        $events = events::query()
+            ->where('title', 'LIKE', "%$keyword%")
+            ->orWhere('content', 'LIKE', "%$keyword%")
+            ->orderBy($orderBy, $order)
+            ->paginate($limit, ['*'], 'page', $page);
+
+        $currentPage = $events->currentPage();
+        $totalPages = $events->lastPage();
+        $items = $events->items();
+
+        return response()->json(compact('currentPage', 'totalPages', 'items'));
+    }
+
+    public function singleItem(Request $request)
+    {
+        $id = $request->route('id');
+        return response()->json(events::find($id));
+    }
+
+    public function update(Request $request)
+    {
+        $id = $request->route('id');
+        $event = events::find($id);
+        $event->update($request->all());
+        return response()->json($event);
+    }
+
+    public function delete(Request $request)
+    {
+        $id = $request->route('id');
+        $event = events::find($id);
+        $event->delete();
+        return response()->json($event);
     }
 
     // Create event
@@ -100,7 +146,6 @@ class EventsController extends Controller
             // $event->cover_image_path = $path;
             // $event->cover_image_filename = $generatedFilename;
             $event->cover_image = '/storage/uploads/' . $generatedFilename;
-
         }
         $event->save();
         // $event->image_url = isset($path) ? asset('storage/' . $path) : null;
