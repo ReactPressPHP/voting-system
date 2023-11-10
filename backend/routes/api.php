@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\Login\UserController;
+use App\Http\Controllers\Api\Vote\VoteController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,3 +21,6 @@ use App\Http\Controllers\Api\Login\UserController;
 // use Jakyeru\Larascord\Http\Controllers\DiscordController;
 
 Route::get('/Login', [UserController::class, 'DiscordLogin']);
+
+Route::post('/vote', [VoteController::class, 'Vote']);
+
