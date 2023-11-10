@@ -26,31 +26,31 @@ const TeamSelection = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center w-full">
-      <h2>Team Selection</h2>
-      <div className=" flex flex-row gap-2  ">
-        <div className="bg-accent text-white border-2  border-black   overflow-scroll">
-          <h1 className="border-b-4 border-black">Available Teams:</h1>
-          <ul>
+    <div className="form-control">
+      <label className="font-bold mb-2 text-center">Team Selection</label>
+      <div className="flex flex-row w-full gap-1">
+        <div className="bg-neutral-100 border border-accent p-2 w-full max-w-[50%]">
+          <h1 className="border-b-4 border-black p-2">Available Teams:</h1>
+          <ul className="h-[200px] overflow-auto">
             {availableTeams.map((team) => (
               <li
                 key={team}
                 onClick={() => handleTeamSelect(team)}
-                className="hover:cursor-pointer hover:bg-white border-b-2 border-black hover:text-black flex flex-col justify-center items-center "
+                className="cursor-pointer hover:bg-neutral-200 text-center p-2 border border-neutral-300"
               >
                 {team}
               </li>
             ))}
           </ul>
         </div>
-        <div className="bg-accent text-white border-2 border-black overflow-scroll">
-          <h1 className="border-b-4 border-black">Selected Teams:</h1>
+        <div className="bg-neutral-100 border border-accent p-2 w-full max-w-[50%]">
+          <h1 className="border-b-4 border-black p-2">Selected Teams:</h1>
           {selectedTeams.length > 0 && (
-            <ul>
+            <ul className="h-[200px] overflow-auto">
               {selectedTeams.map((team) => (
                 <li
                   key={team}
-                  className="hover:cursor-pointer hover:bg-white border-b-2 border-black hover:text-black flex flex-col justify-center items-center "
+                  className="cursor-pointer hover:bg-neutral-200 text-center p-2 border border-neutral-300"
                 >
                   {team}
                 </li>
