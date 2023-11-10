@@ -38,5 +38,40 @@ export const verifyMember = async (req, res) => {
     });
     
   }
+}
+
+import {
+  Client,
+  Events,
+  IntentsBitField,
+  GatewayIntentBits
+} from 'discord.js';
+
+export const scrapeDiscordMembers = async (req, res) => {
+
+  let guildMembers = [];
+  const client = new Client({
+    intents: [
+      GatewayIntentBits.GuildMembers,
+      IntentsBitField.Flags.Guilds,
+      IntentsBitField.Flags.GuildMembers,
+      IntentsBitField.Flags.GuildMessages,
+      IntentsBitField.Flags.MessageContent,
+    ],
+  });
+
+  await client.once(Events.ClientReady, async (c) => {
+    const guild = client.guilds.cache.get(process.env.DISCORD_GUILD_ID);
+    let result = await guild.members.fetch();
   
+    guild.members.cache.forEach((member) => {
+      let userId = member.user.id;
+      guildMembers.push(userId);
+    });
+  
+    return res.status(200).json(guildMembers);
+  });
+
+  client.login(process.env.DISCORD_TOKEN);
+
 }
