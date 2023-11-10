@@ -25,6 +25,18 @@ const TeamSelection = () => {
     ]);
   };
 
+  const handleRemoveSelect = (selectedTeam: string) => {
+    const updatedAvailableTeams = selectedTeams.filter(
+      (team) => team !== selectedTeam
+    );
+    setSelectedTeams(updatedAvailableTeams);
+
+    setAvailableTeams((prevSelectedTeams) => [
+      ...prevSelectedTeams,
+      selectedTeam,
+    ]);
+  };
+
   return (
     <div className="form-control">
       <label className="font-bold mb-2 text-center">Team Selection</label>
@@ -51,6 +63,7 @@ const TeamSelection = () => {
                 <li
                   key={team}
                   className="cursor-pointer hover:bg-neutral-200 text-center p-2 border border-neutral-300"
+                  onClick={() => handleRemoveSelect(team)}
                 >
                   {team}
                 </li>

@@ -15,14 +15,16 @@ export default function AdminEventsCreate() {
     <div className="flex flex-col justify-center items-center bg-slate-50 w-full pb-20">
       <div className="card w-full max-w-[1024px] bg-base-100 shadow-xl mt-10 py-10 rounded-3xl border border-accent">
         <div className="card-body">
-          <h1 className="text-2xl text-accent font-bold mb-5">Create New Event</h1>
+          <h1 className="text-2xl text-accent font-bold mb-5">
+            Create New Event
+          </h1>
           <form action="" method="post">
             <div className="form-control mb-3">
               <label className="font-bold">Event Title:</label>
-              <Input type="text" name="title" placeholder="Title"  />
+              <Input type="text" name="title" placeholder="Title" />
             </div>
             <div className="form-control mb-3">
-            <label className="font-bold">Short Description:</label>
+              <label className="font-bold">Short Description:</label>
               <textarea
                 name="short_description"
                 className="textarea textarea-bordered w-full"
@@ -38,12 +40,26 @@ export default function AdminEventsCreate() {
 
             <div className="flex flex-col md:flex-row gap-2 py-10">
               <div className="form-control mb-3 w-full max-w-[100%] md:max-w-[50%]">
-                <label className="font-bold" htmlFor="opening">Opening Date</label>
-                <input type="date" name="opening" placeholder="Type here" className="input input-bordered w-full" />
+                <label className="font-bold" htmlFor="opening">
+                  Opening Date
+                </label>
+                <input
+                  type="datetime-local"
+                  name="opening"
+                  placeholder="Type here"
+                  className="input input-bordered w-full"
+                />
               </div>
               <div className="form-control mb-3 w-full max-w-[100%] md:max-w-[50%]">
-                <label className="font-bold" htmlFor="opening">Closing Date</label>
-                <input type="date" name="closing" placeholder="Type here" className="input input-bordered w-full" />
+                <label className="font-bold" htmlFor="opening">
+                  Closing Date
+                </label>
+                <input
+                  type="datetime-local"
+                  name="closing"
+                  placeholder="Type here"
+                  className="input input-bordered w-full"
+                />
               </div>
             </div>
 
@@ -81,20 +97,22 @@ export default function AdminEventsCreate() {
               </div>
             </div>
             <div className="py-10">
-              <label className="font-bold" htmlFor="cover_image">Upload Cover Image</label>
+              <label className="font-bold" htmlFor="cover_image">
+                Upload Cover Image
+              </label>
               <FileUploader
                 allowedTypes={allowedImageTypes}
                 onFileUpload={handleFileUpload}
               />
             </div>
             <div className="mb-3 flex">
-              <button className="btn btn-lg btn-primary ms-auto rounded-lg">Publish Event</button>
+              <button className="btn btn-lg btn-primary ms-auto rounded-lg">
+                Publish Event
+              </button>
             </div>
           </form>
         </div>
       </div>
     </div>
-
-    
   );
 }
