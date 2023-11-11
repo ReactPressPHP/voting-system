@@ -1,6 +1,12 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { useParams } from "react-router-dom";
 const EventsDetails = () => {
+  const { id } = useParams<{ id: string }>();
+  useEffect(() => {
+    console.log("id", id);
+  }, []);
+
   return (
     <div className="pt-20 flex flex-col justify-center items-center bg-slate-50 w-full gap-10 pb-10">
       <h1 className=" drop-shadow-md shadow-md  shadow-slate-800  rounded-lg text-5xl font-extrabold bg-accent font-white text-white p-10 w-3/6 flex justify-center items-center">
