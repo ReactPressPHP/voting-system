@@ -4,7 +4,6 @@ import Input from "../../components/Input";
 import TeamSelection from "../../components/TeamSelection";
 import { RegisterEvent } from "../../components/admin/libs/types";
 import createEvent from "../../components/admin/libs/createEvent";
-import Toast from "../../components/admin/toast";
 
 export default function AdminEventsCreate() {
   const [response, setResponse] = useState<RegisterEvent>();

@@ -18,7 +18,9 @@ const SigninForm = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          localStorage.setItem("discordChuChu", JSON.stringify(data));
+          let updatedData = { ...data, vote: "" };
+          console.log("updatedData", updatedData);
+          localStorage.setItem("discordChuChu", JSON.stringify(updatedData));
           setID(data.id);
         })
         .then(() => {
