@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Votes', function (Blueprint $table) {
+        Schema::create('discord_server_member_detaileds', function (Blueprint $table) {
             $table->id();
-            $table->string('discord_id');
-            $table->string('event_id');
-            $table->string('team_id');
-            $table->string('score');
-            $table->enum('is_judge', ['true', 'false'])->default('false');
+            $table->longText('members');
             $table->timestamps();
-         });
+        });
     }
 
     /**
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Votes');
+        Schema::dropIfExists('discord_server_member_detaileds');
     }
 };

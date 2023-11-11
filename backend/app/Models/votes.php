@@ -15,8 +15,10 @@ class votes extends Model
      * @var string[]
      */
     protected $fillable = [
-        'vote',
-        'user_id',
-        'vote_score',
+        'discord_id',
+        'event_id',
+        'team_id',
+        'score',
+        'is_judge',
     ];
 }

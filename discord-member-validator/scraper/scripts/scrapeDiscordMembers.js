@@ -69,3 +69,28 @@ export const scrapeDiscordMembers = async () => {
 
 }
 
+export const scrapeDiscordMembersWithFullDetails = async () => {
+
+  // DATA HOLDER
+  let tempData = [];
+  let discordServerMemberStorage = path.join(__dirname, '../../src/Database/discordMembersFullDetails.json');
+
+  await client.once(Events.ClientReady, async (c) => {
+
+    const guild = client.guilds.cache.get(process.env.DISCORD_GUILD_ID);
+    let res = await guild.members.fetch();
+
+    guild.members.cache.forEach((member) => {
+      let user = member.user;
+      tempData.push(user);
+
+    });
+    console.log(tempData);
+    let finalData = JSON.stringify(tempData);
+    fs.writeFile(discordServerMemberStorage, finalData, "utf8", (err) => {});
+  });
+
+  client.login(process.env.DISCORD_TOKEN);
+
+}
+

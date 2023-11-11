@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('Teams', function (Blueprint $table) {
             $table->id();
-            $table->string('team_name')->nullable();
-            $table->string('project_name')->nullable();
-            $table->string('Project_desription')->nullable();
+            $table->foreignId('event_id')->nullable()->constrained('events')->onDelete('cascade');
+            $table->string('name')->nullable();
+            $table->longText('members')->nullable();
             $table->timestamps();
         });
     }
