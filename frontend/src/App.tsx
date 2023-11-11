@@ -11,8 +11,7 @@ import AdminSignIn from "./pages/admin/AdminSignIn";
 import AdminDashBoard from "./pages/admin/AdminDashBoard";
 import AdminEvents from "./pages/admin/AdminEvents";
 import AdminEventsCreate from "./pages/admin/AdminEventsCreate";
-import ProtectedRoute from "./pages/ProtectedRoute";
-import AdminProtectedRoute from "./pages/admin/AdminProtectedRoute";
+
 import AdminTeams from "./pages/admin/AdminTeams";
 import AdminTeamsCreate from "./pages/admin/AdminTeamsCreate";
 import AdminUsers from "./pages/admin/AdminUsers";
@@ -23,7 +22,7 @@ import AdminTeamsEdit from "./pages/admin/AdminTeamsEdit";
 
 function App() {
   const [data] = useLocalStorage("discordChuChu", "");
-  const { id } = useParams<{ id: string }>();
+
   return (
     <AuthContext.Provider value={data}>
       <BrowserRouter>
@@ -33,7 +32,7 @@ function App() {
             <Route index element={<Landing />} />
             <Route path="/sign-in" element={<SigninForm />} />
             <Route path="/events" element={<Events />} />
-            <Route path={`/event-details${id}`} element={<EventsDetails />} />
+            <Route path="/event-details/:id" element={<EventsDetails />} />
             <Route path="*" element={<p>404 Not Found</p>} />
           </Route>
           <Route element={<AdminLayout />}>

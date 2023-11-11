@@ -6,10 +6,10 @@ import { RegisterEvent } from "../components/admin/libs/types";
 const Events = () => {
   const [listOfEvents, setListOfEvents] = useState<RegisterEvent>();
   const fetchListOfEvents = async () => {
-    let value = await getListofEvents();
-    console.log("value", value);
-    setListOfEvents(value);
-    return value;
+    let eventList = await getListofEvents();
+    console.log("eventList", eventList);
+    setListOfEvents(eventList);
+    return eventList;
   };
   useEffect(() => {
     fetchListOfEvents();
