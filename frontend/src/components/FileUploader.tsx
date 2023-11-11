@@ -52,7 +52,12 @@ const FileUploader = ({ allowedTypes, onFileUpload }: Props) => {
 
   return (
     <div>
-      <input type="file" onChange={handleFileChange} name="cover_image" className="file-input w-full max-w-xs" />
+      <input
+        type="file"
+        onChange={handleFileChange}
+        name="cover_image"
+        className="file-input w-full max-w-xs"
+      />
       <button onClick={handleUpload} className="btn btn-accent rounded-lg">
         Upload
       </button>

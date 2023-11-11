@@ -2,7 +2,7 @@ import Layout from "./pages/Layout";
 import SigninForm from "./pages/SigninForm";
 import { AuthContext } from "./contexts/AuthContext";
 import Landing from "./pages/Landing";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import useLocalStorage from "use-local-storage";
 import Events from "./pages/Events";
 import EventsDetails from "./pages/EventsDetails";
@@ -11,8 +11,7 @@ import AdminSignIn from "./pages/admin/AdminSignIn";
 import AdminDashBoard from "./pages/admin/AdminDashBoard";
 import AdminEvents from "./pages/admin/AdminEvents";
 import AdminEventsCreate from "./pages/admin/AdminEventsCreate";
-import ProtectedRoute from "./pages/ProtectedRoute";
-import AdminProtectedRoute from "./pages/admin/AdminProtectedRoute";
+
 import AdminTeams from "./pages/admin/AdminTeams";
 import AdminTeamsCreate from "./pages/admin/AdminTeamsCreate";
 import AdminUsers from "./pages/admin/AdminUsers";
@@ -33,7 +32,7 @@ function App() {
             <Route index element={<Landing />} />
             <Route path="/sign-in" element={<SigninForm />} />
             <Route path="/events" element={<Events />} />
-            <Route path="/event-details" element={<EventsDetails />} />
+            <Route path="/event-details/:id" element={<EventsDetails />} />
             <Route path="*" element={<p>404 Not Found</p>} />
           </Route>
           <Route element={<AdminLayout />}>

@@ -1,8 +1,13 @@
+import { useState } from "react";
 import FileUploader from "../../components/FileUploader";
 import Input from "../../components/Input";
 import TeamSelection from "../../components/TeamSelection";
+import { RegisterEvent } from "../../components/admin/libs/types";
+import createEvent from "../../components/admin/libs/createEvent";
+import Toast from "../../components/admin/toast";
 
 export default function AdminEventsCreate() {
+  const [response, setResponse] = useState<RegisterEvent>();
   const allowedImageTypes = {
     "image/*": [".png", ".jpg", ".jpeg", ".svg"],
   };
@@ -18,10 +23,26 @@ export default function AdminEventsCreate() {
           <h1 className="text-2xl text-accent font-bold mb-5">
             Create New Event
           </h1>
-          <form action="" method="post">
+          <form
+            onSubmit={async (event) => {
+              const data = await createEvent(event);
+              console.log("data", data);
+              if (!data) throw new Error("No data returned");
+              setResponse(data);
+              if (data.id) {
+                (event.target as HTMLFormElement).reset();
+              }
+            }}
+          >
             <div className="form-control mb-3">
               <label className="font-bold">Event Title:</label>
+
               <Input type="text" name="title" placeholder="Title" />
+              {response?.error && (
+                <div className="text-red-700">
+                  {Object.values(response?.error)}
+                </div>
+              )}
             </div>
             <div className="form-control mb-3">
               <label className="font-bold">Short Description:</label>
@@ -45,7 +66,7 @@ export default function AdminEventsCreate() {
                 </label>
                 <input
                   type="datetime-local"
-                  name="opening"
+                  name="voting_startdate"
                   placeholder="Type here"
                   className="input input-bordered w-full"
                 />
@@ -56,43 +77,15 @@ export default function AdminEventsCreate() {
                 </label>
                 <input
                   type="datetime-local"
-                  name="closing"
+                  name="voting_enddate"
                   placeholder="Type here"
                   className="input input-bordered w-full"
                 />
               </div>
             </div>
 
-            {/* <div className="flex  justify-between items-center flex-row gap-56 ">
-              <div className="flex flex-col gap-2">
-                <label className="font-bold text-2xl gap-2">Opening:</label>
-                <p className="px-5 py-2 text-xl font-bold rounded-3xl bg-accent text-white text">
-                  01/01/2000
-                </p>
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="font-bold text-2xl">Closing:</label>
-                <p className="px-5 py-2 text-xl font-bold rounded-3xl bg-accent text-white text">
-                  01/01/2000
-                </p>
-              </div>
-            </div> */}
             <div className=" w-full flex flex-row mt-5 justify-center gap-5">
-              {/* <div className="flex flex-col gap-2  bg-accent w-1/3 rounded-xl items-center justify-center">
-                <label className="font-extrabold text-3xl">TEAMS:</label>
-                {teams.map((team) => {
-                  return (
-                    <div
-                      key={team}
-                      className="  border-white border-4 w-11/12 mt-2 mb-2 rounded-xl text-center font-extrabold text-2xl "
-                    >
-                      {team}
-                    </div>
-                  );
-                })}
-              </div> */}
               <div className="w-full">
-                {/* Other components or content */}
                 <TeamSelection />
               </div>
             </div>
@@ -106,10 +99,14 @@ export default function AdminEventsCreate() {
               />
             </div>
             <div className="mb-3 flex">
-              <button className="btn btn-lg btn-primary ms-auto rounded-lg">
+              <button
+                type="submit"
+                className="btn btn-lg btn-primary ms-auto rounded-lg"
+              >
                 Publish Event
               </button>
             </div>
+            {/* {response?.id && <Toast />} */}
           </form>
         </div>
       </div>

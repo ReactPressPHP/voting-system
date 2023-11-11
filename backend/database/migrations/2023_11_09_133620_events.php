@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('cover_image')->nullable();
             $table->string('title');
             $table->string('short_description')->nullable();
-            $table->string('content')->nullable();
+            $table->longText('content')->nullable();
             $table->dateTime('voting_startdate');
             $table->datetime('voting_enddate');
             $table->timestamps();

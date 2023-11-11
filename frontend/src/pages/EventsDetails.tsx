@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const EventsDetails = () => {
+  const { id } = useParams<{ id: string }>();
+
   return (
     <div className="pt-20 flex flex-col justify-center items-center bg-slate-50 w-full gap-10 pb-10">
       <h1 className=" drop-shadow-md shadow-md  shadow-slate-800  rounded-lg text-5xl font-extrabold bg-accent font-white text-white p-10 w-3/6 flex justify-center items-center">
-        Hackathon 2023
+        ID {id}
       </h1>
       <div className="bg-white w-3/6 px-10 py-5 flex flex-col gap-5 drop-shadow-md shadow-md  shadow-slate-800  rounded-lg">
         <h2 className="text-2xl font-bold">Details:</h2>

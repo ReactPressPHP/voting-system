@@ -7,6 +7,7 @@ use App\Models\votes;
 use Illuminate\Http\Request;
 use DateTime;
 use App\Models\events;
+use Carbon\Carbon;
 
 class EventsController extends Controller
 {
@@ -103,7 +104,13 @@ class EventsController extends Controller
         if (!$voting_startdate) {
             return response()->json(['error' => 'Voting start date is required'], 400);
         }
+         
 
+        // Convert the input to a Carbon instance
+        $voting_startdate = Carbon::createFromFormat('Y-m-d\TH:i', $voting_startdate);
+        
+        // Format the Carbon instance to the desired API format
+        $voting_startdate = $voting_startdate->format('Y-m-d H:i:s');
         if (!$this->isValidDateTime($voting_startdate)) {
             return response()->json(['error' => 'Voting start date is not valid'], 400);
         }
@@ -112,6 +119,11 @@ class EventsController extends Controller
             return response()->json(['error' => 'Voting end date is required'], 400);
         }
 
+        // Convert the input to a Carbon instance
+       $voting_enddate = Carbon::createFromFormat('Y-m-d\TH:i',$voting_enddate);
+        
+        // Format the Carbon instance to the desired API format
+       $voting_enddate =$voting_enddate->format('Y-m-d H:i:s');
         if (!$this->isValidDateTime($voting_enddate)) {
             return response()->json(['error' => 'Voting end date is not valid'], 400);
         }

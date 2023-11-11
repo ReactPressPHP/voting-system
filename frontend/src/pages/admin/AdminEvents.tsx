@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Button from "../../components/admin/Button";
 import Pagination from "../../components/admin/Pagination";
 import RecordsTable from "../../components/admin/RecordsTable";
@@ -18,6 +19,7 @@ const data = [
     user: "Hackathon 2024: February",
   },
 ];
+
 export default function AdminEvents() {
   return (
     <div className="w-full max-w-[1024px] mx-auto shadow-xl card bg-base-100 mt-20">
