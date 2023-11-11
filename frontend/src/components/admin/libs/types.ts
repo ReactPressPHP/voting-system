@@ -1,6 +1,7 @@
 export type RegisterEvent = {
   id: string;
   title: string;
+
   cover_image: {
     lastModified: number;
     name: string;
@@ -14,4 +15,5 @@ export type RegisterEvent = {
   voting_enddate: string;
   created_at: string;
   error?: string;
+  items?: [];
 };

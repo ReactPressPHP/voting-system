@@ -16,7 +16,6 @@ const createEvent = async (event: FormEvent) => {
     created_at: formData.get("created_at") as string,
   };
 
-  console.log("newEvent", newEvent);
   try {
     const query = await fetch("http://127.0.0.1:8000/api/events/create", {
       method: "POST",

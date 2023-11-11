@@ -1,6 +1,6 @@
 import Lottie from "lottie-react";
 import heroAnimation from "../assets/tech-2.json";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useLocalStorage from "use-local-storage";
 import { useEffect, useState } from "react";
 
@@ -36,12 +36,14 @@ export default function Hero() {
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
           </p>
-          <button
-            onClick={() => navigate(isMember ? "/events" : "/sign-in")}
+          <Link
+            to="/events"
+            // onClick={() => navigate(isMember ? "/events" : "/sign-in")}
+            // }
             className="text-white btn bg-accent hover:bg-second"
           >
             View Events
-          </button>
+          </Link>
           {/* {isMember && <Link to="/events">VOTE</Link>} */}
         </div>
       </div>

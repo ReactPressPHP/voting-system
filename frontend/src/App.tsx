@@ -2,7 +2,7 @@ import Layout from "./pages/Layout";
 import SigninForm from "./pages/SigninForm";
 import { AuthContext } from "./contexts/AuthContext";
 import Landing from "./pages/Landing";
-import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import useLocalStorage from "use-local-storage";
 import Events from "./pages/Events";
 import EventsDetails from "./pages/EventsDetails";
@@ -19,6 +19,8 @@ import AdminUsersCreate from "./pages/admin/AdminUsersCreate";
 import AdminUsersEdit from "./pages/admin/AdminUsersEdit";
 import AdminEventsEdit from "./pages/admin/AdminEventsEdit";
 import AdminTeamsEdit from "./pages/admin/AdminTeamsEdit";
+import EventParticipants from "./pages/EventParticipants";
+import Vote from "./pages/Vote";
 
 function App() {
   const [data] = useLocalStorage("discordChuChu", "");
@@ -33,6 +35,12 @@ function App() {
             <Route path="/sign-in" element={<SigninForm />} />
             <Route path="/events" element={<Events />} />
             <Route path="/event-details/:id" element={<EventsDetails />} />
+            <Route
+              path="/view-participants/:event_id"
+              element={<EventParticipants />}
+            />
+            <Route path="/vote/:event_id/:team_id" element={<Vote />} />
+
             <Route path="*" element={<p>404 Not Found</p>} />
           </Route>
           <Route element={<AdminLayout />}>
