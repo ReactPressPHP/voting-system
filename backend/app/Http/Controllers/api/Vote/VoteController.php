@@ -48,8 +48,6 @@ class VoteController extends Controller
             return response()->json(['error' => 'Nung ginagawa muh!. Something went wrong'], 400);
         }
 
-        
-
         // If user is not a member of discord server
         $isValidMember = $this->isValidDiscordServerMember($discord_id);
         if (!$isValidMember) 
@@ -57,19 +55,21 @@ class VoteController extends Controller
             return response()->json(['error' => 'Only members who have been part of the Daedalus Discord server for at least one week before the event can vote. Better luck next year.'], 400);
         }
 
-        $is_judge = "true";
+        // Default set
+        $is_judge = "false";
 
         // Reset score to maximum of 5
         if ($score > 5) { $score = 5; }
 
-        // Check if discord id is in the database usertest. If yes he can vote more than 1 point
+        // Check if discord id is in the database users. If yes he can vote more than 1 point
         $count = DB::table('users')->where('discord_id', $discord_id)->count();
-        if ($count === 0) {
+        if ($count > 0) {
+            $is_judge = "true";
+        } else {
             $score = 1;
             $is_judge = "false";
         }
-
-
+        
         if ($is_judge == "true") 
         {
             // If user is a judge (TRUE) check if he already voted on specific team. If true, return error
@@ -79,7 +79,7 @@ class VoteController extends Controller
             ->where('team_id', $team_id)
             ->count();
             if ($count > 0) {
-                return response()->json(['error' => "You've already made a vote/score for this team BOSSING!"], 400);
+                return response()->json(['error' => "You've already made a vote / score for this team"], 400);
             }
         } 
         else 
@@ -90,7 +90,7 @@ class VoteController extends Controller
             ->where('event_id', $event_id)
             ->count();
             if ($count > 0) {
-                return response()->json(['error' => 'You have already voted and can only vote once'], 400);
+                return response()->json(['error' => 'You have already voted and can only vote for one team only.'], 400);
             } 
 
             // Check if the the voter is a member of the team they are voting
@@ -114,6 +114,8 @@ class VoteController extends Controller
         $vote->team_id = $team_id;
         $vote->score = $score;
         $vote->is_judge = $is_judge;
+
+        // return response()->json($vote);
         $vote->save();
 
         return response()->json(['error' => 'Congratulations you have voted.'], 201);
@@ -133,6 +135,24 @@ class VoteController extends Controller
     {
         $eventId = $request->route('eventId');
 
+        $currentEvent = Events::where('id', $eventId)->select('voting_enddate', 'voting_startdate')->first();
+        $startDate = $currentEvent->voting_startdate;
+        $endDate = $currentEvent->voting_enddate;
+
+        $currentDateTime = Carbon::now()->format('Y-m-d H:i:s');
+        // CHECK EVENT STATUS
+        $EVENT_STATUS = 'upcoming';
+
+        if ( $currentDateTime < $startDate ) {
+            $EVENT_STATUS = 'upcoming';
+        } 
+        if ( $currentDateTime > $startDate && $currentDateTime < $endDate ) {
+            $EVENT_STATUS = 'ongoing';
+        } 
+        if ( $currentDateTime > $startDate && $currentDateTime > $endDate ) {
+            $EVENT_STATUS = 'done';
+        }
+        
         // total number of judges
         $judgeCount = Votes::where('event_id', $eventId)
         ->where('is_judge', 'true')
@@ -143,8 +163,6 @@ class VoteController extends Controller
         $communityVoterCount = Votes::where('event_id', $eventId)
         ->where('is_judge', 'false')
         ->count();
-
-        // return response()->json( [ $communityVoterCount ] );
         
         $teams = Teams::where('event_id', $eventId)
         ->select('id', 'name')
@@ -159,7 +177,7 @@ class VoteController extends Controller
             ->count();
             $team->communityTotalVotes = $communityTotalVotes;
 
-            // Judges total votes per team
+            // Judges total votes per team #### MALI
             $judgesTotalVotes = Votes::where('event_id', $eventId)
             ->where('team_id', $team->id)
             ->where('is_judge', 'true')
@@ -168,6 +186,7 @@ class VoteController extends Controller
         }
 
         $result = [
+            "event_status" => $EVENT_STATUS,
             "judgeCount" => $judgeCount,
             "communityVoterCount" => $communityVoterCount,
             "teams" => $teams

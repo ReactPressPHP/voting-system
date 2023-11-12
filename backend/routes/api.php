@@ -29,7 +29,6 @@ Route::get('/teams/{eventId}/{teamId}', [TeamController::class, 'EventTeamsSingl
 
 Route::post('/vote', [VoteController::class, 'Vote']);
 Route::get('/vote/rankings/{eventId}', [VoteController::class, 'VoteRankings']);
-
 Route::get('/roleChecker/{id?}', [UserController::class, 'roleChecker']);
 
 
