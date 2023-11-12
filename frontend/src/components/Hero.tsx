@@ -32,9 +32,24 @@ export default function Hero() {
             Voting System
           </h1>
           <p className="py-6 text-blue-950 lg:px-0 sm:px-32 sm:text-center lg:text-left">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+            Dive into a world of dynamic voting on our cutting-edge platform!
+            Whether you're a casual observer or a dedicated voter, we offer a
+            unique experience. Explore upcoming events, discover talented
+            participants, and check real-time voting stats. To cast your vote,
+            join our exclusive Discord server – your gateway to decision-making.
+            <br /> <br />
+            Curious about events, participants, or vote standings? Our
+            user-friendly interface has you covered. For event organizers, our
+            admin dashboard simplifies event creation, participant management,
+            and vote monitoring.
+            <br /> <br />
+            No more guesswork in judging – our scoring system, based on preset
+            criteria, ensures a fair assessment for an engaging and meaningful
+            voting experience.
+            <br /> <br />
+            Join us in shaping unforgettable moments. Every vote counts towards
+            celebrating talent, community, and shared enthusiasm. Let's make
+            every event a memorable celebration together!
           </p>
           <Link
             to="/events"
