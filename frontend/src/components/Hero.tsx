@@ -37,16 +37,7 @@ export default function Hero() {
             unique experience. Explore upcoming events, discover talented
             participants, and check real-time voting stats. To cast your vote,
             join our exclusive Discord server – your gateway to decision-making.
-            <br /> <br />
-            Curious about events, participants, or vote standings? Our
-            user-friendly interface has you covered. For event organizers, our
-            admin dashboard simplifies event creation, participant management,
-            and vote monitoring.
-            <br /> <br />
-            No more guesswork in judging – our scoring system, based on preset
-            criteria, ensures a fair assessment for an engaging and meaningful
-            voting experience.
-            <br /> <br />
+            <br></br> <br></br>
             Join us in shaping unforgettable moments. Every vote counts towards
             celebrating talent, community, and shared enthusiasm. Let's make
             every event a memorable celebration together!
@@ -55,7 +46,7 @@ export default function Hero() {
             to="/events"
             // onClick={() => navigate(isMember ? "/events" : "/sign-in")}
             // }
-            className="text-white btn bg-accent hover:bg-second"
+            className=" btn hover:bg-white text-cyan-50 hover:border-accent hover:text-black bg-accent"
           >
             View Events
           </Link>

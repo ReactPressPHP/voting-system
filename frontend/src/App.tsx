@@ -11,7 +11,6 @@ import AdminSignIn from "./pages/admin/AdminSignIn";
 import AdminDashBoard from "./pages/admin/AdminDashBoard";
 import AdminEvents from "./pages/admin/AdminEvents";
 import AdminEventsCreate from "./pages/admin/AdminEventsCreate";
-
 import AdminTeams from "./pages/admin/AdminTeams";
 import AdminTeamsCreate from "./pages/admin/AdminTeamsCreate";
 import AdminUsers from "./pages/admin/AdminUsers";
@@ -21,6 +20,7 @@ import AdminEventsEdit from "./pages/admin/AdminEventsEdit";
 import AdminTeamsEdit from "./pages/admin/AdminTeamsEdit";
 import EventParticipants from "./pages/EventParticipants";
 import Vote from "./pages/Vote";
+import VoteRankings from "./pages/VoteRankings";
 
 function App() {
   const [data] = useLocalStorage("discordChuChu", "");
@@ -33,6 +33,7 @@ function App() {
           <Route element={<Layout />}>
             <Route index element={<Landing />} />
             <Route path="/sign-in" element={<SigninForm />} />
+            <Route path="rankings" element={<VoteRankings />} />
             <Route path="/events" element={<Events />} />
             <Route path="/event-details/:id" element={<EventsDetails />} />
             <Route

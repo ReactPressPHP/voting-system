@@ -25,10 +25,10 @@ const EventsDetails = () => {
       <h1 className=" drop-shadow-md shadow-md  shadow-slate-800  rounded-lg text-5xl font-extrabold bg-accent font-white text-white p-10 w-3/6 flex justify-center items-center">
         {event?.title}
       </h1>
-      <div className="bg-white w-3/6 px-10 py-5 flex flex-col gap-5 drop-shadow-md shadow-md  shadow-slate-800  rounded-lg">
-        <h2 className="text-2xl font-bold">Details:</h2>
+      <div className=" first-line   shadow-accent  border border-accent  shadow-md: bg-white w-3/6 px-10 py-5 flex flex-col gap-5 drop-shadow-md shadow-md    rounded-lg">
+        <h2 className="   text-2xl font-bold">Details:</h2>
         <p>{event?.content}</p>
-        <p className="text-2xl font-bold">
+        <p className="text-2xl font-bold ">
           Voting start: {event?.voting_startdate}
         </p>
         <p className="text-2xl font-bold">
@@ -37,7 +37,7 @@ const EventsDetails = () => {
       </div>
       <Link
         to={`/view-participants/${event?.id}`}
-        className="p-5 rounded-xl font-bold hover:bg-white hover:text-black hover:border-accent hover:border-2 bg-black text-white border-2"
+        className="p-5 rounded-xl font-bold  flex justify-center items-center  hover:border-2 text-center   btn hover:bg-white text-cyan-50 hover:border-accent hover:text-black bg-accent  "
       >
         View Participants
       </Link>

@@ -23,12 +23,12 @@ const Teams: React.FC<TeamsProps> = ({ teams }) => {
   const [formData, setFormData] = useState({});
   return (
     <div>
-      <div className="py-20 bg-base-100 flex flex-col gap-2 min-h-screen ">
+      <div className="py-10 bg-base-100 flex flex-col gap-2 min-h-screen ">
         {teams.map((team: Team) => {
           return (
             <div
               key={team.id}
-              className="collapse collapse-arrow  border border-accent max-w-[1024px] mx-auto mb-3 shadow-lg "
+              className="collapse collapse-arrow  drop-shadow-md shadow-accent  border border-accent max-w-[1024px] mx-auto mb-3 shadow-md "
             >
               <input
                 type="checkbox"
@@ -74,7 +74,7 @@ const Teams: React.FC<TeamsProps> = ({ teams }) => {
                     team_name: team.name,
                   });
                 }}
-                className=" btn  btn-accent mx-auto my-5 rounded-xl min-w-[200px] "
+                className=" btn hover:bg-white text-cyan-50 hover:border-accent hover:text-black bg-accent mx-auto my-5 rounded-xl min-w-[200px] "
               >
                 VOTE
               </button>

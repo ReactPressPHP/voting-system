@@ -10,10 +10,10 @@ const EventCard: React.FC<EventCardProps> = ({ listOfEvents }) => {
         return (
           <Link
             to={`/event-details/${item.id}`}
-            className=" drop-shadow-md shadow-md flex-col  shadow-slate-800  rounded-lg w-full flex justify-center items-center bg-accent m-2  "
+            className="  gap-5 flex-col drop-shadow-md shadow-accent  border border-accent  shadow-md   px-5 py-5 rounded-lg w-full flex justify-center items-center bg-white mb-2  "
           >
             {/* <p className=" p-5 text-xl text-white font-extrabold w-full"> */}
-            <div className=" pt-2 text-xl text-white font-extrabold w-full">
+            <div className=" pt-2 text-xl  text-accent font-extrabold w-full">
               {item.title}
             </div>
             <p>{item.short_description}</p>
@@ -24,7 +24,6 @@ const EventCard: React.FC<EventCardProps> = ({ listOfEvents }) => {
           </Link>
         );
       })}
-      ;
     </>
   );
 };
