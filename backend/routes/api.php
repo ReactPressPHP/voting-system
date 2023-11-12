@@ -26,7 +26,9 @@ Route::post('/events/delete/{id}', [EventsController::class, 'delete']);
 
 Route::get('/teams/{eventId}', [TeamController::class, 'EventTeams']);
 Route::get('/teams/{eventId}/{teamId}', [TeamController::class, 'EventTeamsSingle']);
+
 Route::post('/vote', [VoteController::class, 'Vote']);
+Route::get('/vote/rankings/{eventId}', [VoteController::class, 'VoteRankings']);
 
 
 use Illuminate\Support\Facades\DB;

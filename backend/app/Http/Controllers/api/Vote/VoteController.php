@@ -8,6 +8,7 @@ use App\Models\events;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\DiscordServerMember;
+use App\Models\Teams;
 use DateTime;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Date;
@@ -126,6 +127,52 @@ class VoteController extends Controller
             'discord_id' => $discord_id,
         ]);
 
+    }
+
+    public function VoteRankings(Request $request)
+    {
+        $eventId = $request->route('eventId');
+
+        // total number of judges
+        $judgeCount = Votes::where('event_id', $eventId)
+        ->where('is_judge', 'true')
+        ->distinct('discord_id')
+        ->count();
+
+        // total number of community voters
+        $communityVoterCount = Votes::where('event_id', $eventId)
+        ->where('is_judge', 'false')
+        ->count();
+
+        // return response()->json( [ $communityVoterCount ] );
+        
+        $teams = Teams::where('event_id', $eventId)
+        ->select('id', 'name')
+        ->get();
+        foreach ($teams as $team) {
+            // $team->members = json_decode($team->members);
+
+            // Community total votes per team
+            $communityTotalVotes = Votes::where('event_id', $eventId)
+            ->where('team_id', $team->id)
+            ->where('is_judge', 'false')
+            ->count();
+            $team->communityTotalVotes = $communityTotalVotes;
+
+            // Judges total votes per team
+            $judgesTotalVotes = Votes::where('event_id', $eventId)
+            ->where('team_id', $team->id)
+            ->where('is_judge', 'true')
+            ->sum('score');
+            $team->judgesTotalVotes = $judgesTotalVotes;
+        }
+
+        $result = [
+            "judgeCount" => $judgeCount,
+            "communityVoterCount" => $communityVoterCount,
+            "teams" => $teams
+        ];
+        return response()->json($result);
     }
 
 
