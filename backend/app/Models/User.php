@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Jakyeru\Larascord\Traits\InteractsWithDiscord;
 use Laravel\Sanctum\HasApiTokens;
 
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, InteractsWithDiscord;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -19,21 +18,10 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'id',
+        'discord_id',
+        'name',
         'username',
-        'global_name',
-        'discriminator',
-        'email',
-        'avatar',
-        'verified',
-        'banner',
-        'banner_color',
-        'accent_color',
-        'locale',
-        'mfa_enabled',
-        'premium_type',
-        'public_flags',
-        'roles',
+        'role',
     ];
 
     /**
@@ -52,19 +40,9 @@ class User extends Authenticatable
      */
     protected $casts = [
         'id' => 'integer',
+        'discord_id' => 'integer',
+        'name' => 'string',
         'username' => 'string',
-        'global_name' => 'string',
-        'discriminator' => 'string',
-        'email' => 'string',
-        'avatar' => 'string',
-        'verified' => 'boolean',
-        'banner' => 'string',
-        'banner_color' => 'string',
-        'accent_color' => 'string',
-        'locale' => 'string',
-        'mfa_enabled' => 'boolean',
-        'premium_type' => 'integer',
-        'public_flags' => 'integer',
-        'roles' => 'json',
+        'role' => 'string',
     ];
 }
