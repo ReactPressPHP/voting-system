@@ -1,11 +1,13 @@
 import { RegisterEvent } from "../../components/admin/libs/types";
+const BASE_URL = import.meta.env.VITE_BASE_URL as string;
 
 export const getListofEvents = async () => {
   try {
-    const query = await fetch("http://127.0.0.1:8000/api/events", {
+    const query = await fetch(`${BASE_URL}/api/events`, {
       method: "GET",
       headers: { formData: "formData" },
     });
+    console.log(BASE_URL);
     const response: RegisterEvent = (await query.json()) as RegisterEvent;
     return response;
   } catch (error) {
@@ -15,7 +17,7 @@ export const getListofEvents = async () => {
 
 export const getSingleEvent = async (id: string) => {
   try {
-    const query = await fetch(`http://127.0.0.1:8000/api/events/${id}`, {
+    const query = await fetch(`${BASE_URL}/api/events/${id}`, {
       method: "GET",
       headers: { formData: "formData" },
     });
@@ -28,13 +30,10 @@ export const getSingleEvent = async (id: string) => {
 
 export const getSingleTeam = async (event_id: string, team_id: string) => {
   try {
-    const query = await fetch(
-      `http://127.0.0.1:8000/api/teams/${event_id}/${team_id}`,
-      {
-        method: "GET",
-        headers: { formData: "formData" },
-      }
-    );
+    const query = await fetch(`${BASE_URL}/api/teams/${event_id}/${team_id}`, {
+      method: "GET",
+      headers: { formData: "formData" },
+    });
     const response = await query.json();
     return response;
   } catch (error) {
@@ -44,7 +43,7 @@ export const getSingleTeam = async (event_id: string, team_id: string) => {
 
 export const getListofTeams = async (event_id: string) => {
   try {
-    const query = await fetch(`http://127.0.0.1:8000/api/teams/${event_id}`, {
+    const query = await fetch(`${BASE_URL}/api/teams/${event_id}`, {
       method: "GET",
       headers: { formData: "formData" },
     });
@@ -57,7 +56,7 @@ export const getListofTeams = async (event_id: string) => {
 
 export const voteForTeam = async () => {
   try {
-    const query = await fetch("http://127.0.0.1:8000/api/vote", {
+    const query = await fetch(`${BASE_URL}/api/vote`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

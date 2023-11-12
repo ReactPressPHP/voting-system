@@ -28,12 +28,12 @@ const Teams: React.FC<TeamsProps> = ({ teams }) => {
           return (
             <div
               key={team.id}
-              className="collapse collapse-arrow border border-accent max-w-[1024px] mx-auto mb-3 shadow-lg "
+              className="collapse collapse-arrow  border border-accent max-w-[1024px] mx-auto mb-3 shadow-lg "
             >
               <input
-                type="radio"
-                name="my-accordion-2"
-                defaultChecked={false}
+                type="checkbox"
+                // name="my-accordion-2"
+                // defaultChecked={false}
               />
               <div className="collapse-title text-2xl font-bold text-accent">
                 {team.name}
@@ -74,7 +74,7 @@ const Teams: React.FC<TeamsProps> = ({ teams }) => {
                     team_name: team.name,
                   });
                 }}
-                className=" btn btn-accent mx-auto my-5 rounded-xl min-w-[200px] "
+                className=" btn  btn-accent mx-auto my-5 rounded-xl min-w-[200px] "
               >
                 VOTE
               </button>
