@@ -30,17 +30,7 @@ Route::get('/teams/{eventId}/{teamId}', [TeamController::class, 'EventTeamsSingl
 Route::post('/vote', [VoteController::class, 'Vote']);
 Route::get('/vote/rankings/{eventId}', [VoteController::class, 'VoteRankings']);
 
+Route::get('/roleChecker/{id?}', [UserController::class, 'roleChecker']);
 
-use Illuminate\Support\Facades\DB;
-Route::get('/roleChecker/{id?}', function(Request $request) {
-  $discord_id =  $request->route('id') ?? null;
 
-  $count = DB::table('users')->where('discord_id', $discord_id)->count();
-  $is_judge = "false";
-  if ($count > 0) {
-    $is_judge = "true";
-  }
 
-  return response()->json(['is_judge' => $is_judge]);
-
-});
