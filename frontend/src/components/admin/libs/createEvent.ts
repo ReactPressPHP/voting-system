@@ -1,6 +1,6 @@
 import { FormEvent } from "react";
 import { RegisterEvent } from "./types";
-
+const BASE_URL = import.meta.env.VITE_BASE_URL as string;
 const createEvent = async (event: FormEvent) => {
   event.preventDefault();
   const formData = new FormData(event.target as HTMLFormElement);
@@ -17,7 +17,7 @@ const createEvent = async (event: FormEvent) => {
   };
 
   try {
-    const query = await fetch("http://127.0.0.1:8000/api/events/create", {
+    const query = await fetch(`${BASE_URL}/api/events/create`, {
       method: "POST",
       body: formData,
     });

@@ -19,8 +19,10 @@ const EventParticipants = () => {
   console.log(teams);
   return (
     <>
-      <div className="pt-20 text-center text-6xl bg-white font-bold">
-        Hackathon Teams
+      <div className="pt-20 text-center text-6xl bg-white font-bold ">
+        <h1 className="mt-5 mx-auto drop-shadow-md shadow-md  shadow-slate-800  rounded-lg text-5xl font-extrabold bg-accent font-white text-white p-10 w-3/6 flex justify-center items-center">
+          Hackathon Teams
+        </h1>
       </div>
       <Teams teams={teams} />
     </>

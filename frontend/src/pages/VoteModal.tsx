@@ -49,7 +49,7 @@ const VoteModal = ({ data }) => {
             className="range range-success"
           />
           <p>Score: {range} </p>
-          <button className="btn btn-accent mt-10 flex mx-auto rounded-md">
+          <button className=" btn hover:bg-white text-cyan-50 hover:border-accent hover:text-black bg-accent mt-10 flex mx-auto rounded-md">
             submit
           </button>
         </form>

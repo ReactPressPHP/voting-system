@@ -32,15 +32,21 @@ export default function Hero() {
             Voting System
           </h1>
           <p className="py-6 text-blue-950 lg:px-0 sm:px-32 sm:text-center lg:text-left">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+            Dive into a world of dynamic voting on our cutting-edge platform!
+            Whether you're a casual observer or a dedicated voter, we offer a
+            unique experience. Explore upcoming events, discover talented
+            participants, and check real-time voting stats. To cast your vote,
+            join our exclusive Discord server – your gateway to decision-making.
+            <br></br> <br></br>
+            Join us in shaping unforgettable moments. Every vote counts towards
+            celebrating talent, community, and shared enthusiasm. Let's make
+            every event a memorable celebration together!
           </p>
           <Link
             to="/events"
             // onClick={() => navigate(isMember ? "/events" : "/sign-in")}
             // }
-            className="text-white btn bg-accent hover:bg-second"
+            className=" btn hover:bg-white text-cyan-50 hover:border-accent hover:text-black bg-accent"
           >
             View Events
           </Link>

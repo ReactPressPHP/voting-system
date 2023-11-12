@@ -17,7 +17,7 @@ export default function Navbar() {
         <ul className="flex items-center px-1 text-md menu menu-horizontal text-blue-950">
           <li>
             <NavLink
-              to="/about"
+              to="/"
               className={({ isActive }) =>
                 isActive ? "bg-accent text-white" : ""
               }
@@ -56,7 +56,6 @@ export default function Navbar() {
                   localStorage.setItem("discordChuChu", "");
                   window.location.reload();
                 }}
-                className="bg-accent text-white"
               >
                 Logout
               </button>
